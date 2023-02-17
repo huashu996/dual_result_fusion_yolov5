@@ -1,13 +1,14 @@
 # dual_modal_perception
 
 ROS package for dual modal perception (rgbt)
-
+## 简介
+   此双模态检测是通过对可见光和红外图像分别训练，得到两个weight，在运行时会对两种图像分别检测，最后对检测结果求极大似然，并且能够对目标进行测距。
 ## 安装
  - 建立ROS工作空间并拷贝这个库
    ```Shell
    mkdir -p ros_ws/src
    cd ros_ws/src
-   git clone git@github.com:shangjie-li/dual_modal_perception.git --recursive
+   git clone git@github.com:huashu996/dual_result_fusion_yolov5.git --recursive
    cd ..
    catkin_make
    ```
@@ -22,7 +23,12 @@ ROS package for dual modal perception (rgbt)
    ```
  - 准备可见光模态的模型文件，并保存至目录`dual_modal_perception/modules/yolov5-test/weights/seumm_visible/`
  - 准备红外光模态的模型文件，并保存至目录`dual_modal_perception/modules/yolov5-test/weights/seumm_lwir/`
-
+ - 改动demo_dual_modal.py文件中权重的路径
+   ```Shell  
+        elif args.modality.lower() == 'rgbt': #双模态  
+        detector1 = Yolov5Detector(weights='weights/yolov5s.pt')  
+        detector2 = Yolov5Detector(weights='weights/yolov5s.pt')  
+   ```
 ## 参数配置
  - 编写相机标定参数`dual_modal_perception/conf/calibration_image.yaml`
    ```
