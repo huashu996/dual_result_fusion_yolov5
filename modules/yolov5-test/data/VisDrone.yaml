@@ -1,0 +1,18 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# VisDrone2019-DET dataset https://github.com/VisDrone/VisDrone-Dataset by Tianjin University
+# Example usage: python train.py --data VisDrone.yaml
+# parent
+# ├── yolov5
+# └── datasets
+#     └── VisDrone  ← downloads here
+
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: /home/cxl/ros_yolov5/src/yolov5/data/VisDrone  # dataset root dir
+train: VisDrone2019-DET-train/images  # train images (relative to 'path')  6471 images
+val: VisDrone2019-DET-val/images  # val images (relative to 'path')  548 images
+test: VisDrone2019-DET-test-dev/images  # test images (optional)  1610 images
+
+# Classes
+nc: 10  # number of classes
+names: ['pedestrian', 'people', 'bicycle', 'car', 'van', 'truck', 'tricycle', 'awning-tricycle', 'bus', 'motor']
